@@ -3,6 +3,7 @@ var router = express.Router();
 const Note = require("../models/note");
 const withAuth = require("../middlewares/auth");
 
+// Rota para criar uma nota
 router.post("/", withAuth, async (req, res) => {
   const { title, body } = req.body;
 
@@ -15,6 +16,20 @@ router.post("/", withAuth, async (req, res) => {
   }
 });
 
+router.get('/search', withAuth, async (req, res) => {
+    const { query } = req.query;
+
+    try {
+        let notes = await Note
+        .find({ author: req.user._id })
+        .find({ $text: {$search: query} });
+        res.json(notes);
+    } catch(error) {
+        res.status(500).json({ error: error });
+    }
+})
+
+//Rota para acessar uma nota
 router.get("/:id", withAuth, async (req, res) => {
   try {
     const { id } = req.params;
@@ -29,15 +44,17 @@ router.get("/:id", withAuth, async (req, res) => {
   }
 });
 
+// Rota para listar todas as notas
 router.get("/", withAuth, async (req, res) => {
   try {
     let notes = await Note.find({ author: req.user._id });
     res.json(notes);
   } catch (error) {
-    res.status(500).status({ error: error });
+    res.status(500).json({ error: error });
   }
 });
 
+// Rota para atualizar uma nota
 router.put("/:id", withAuth, async (req, res) => {
   const { title, body } = req.body;
   const { id } = req.params;
@@ -54,10 +71,13 @@ router.put("/:id", withAuth, async (req, res) => {
       res.status(403).json({ error: "Permission denied" });
     }
   } catch (error) {
-    res.status(500).status({ error: "Problem to update a note" });
+    res.status(500).json({ error: "Problem to update a note" });
   }
 });
 
+
+
+//Rota para deletar uma nota
 router.delete('/:id', withAuth, async (req, res) => {
     const { id } = req.params;
     
@@ -67,12 +87,12 @@ router.delete('/:id', withAuth, async (req, res) => {
             await note.delete();
             res.json({message: 'OK'}).status(204);
         } else {
-            res.status(403).status({ error: "Permission denied" });
+            res.status(403).json({ error: "Permission denied" });
         }
     } catch(error) {
-        res.status(500).status({ error: "Problem to delete a note" });
+        res.status(500).json({ error: "Problem to delete a note" });
     }
-})
+});
 
 const isOwner = (user, note) => {
   if (JSON.stringify(user._id) == JSON.stringify(note.author._id)) {
