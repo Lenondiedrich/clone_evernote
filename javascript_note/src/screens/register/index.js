@@ -1,7 +1,8 @@
-import Header from "../../../components/header";
-import { Column, Section, Title, Container, Card } from "rbx";
-import LogoImage from "../../../assets/images/logo.png";
-import "../../../styles/auth.scss";
+import { Card, Column, Container, Section, Title } from "rbx";
+import LogoImage from "../../assets/images/logo.png";
+import RegisterForm from "../../components/auth/registerForm";
+import Header from "../../components/header";
+import "../../styles/auth.scss";
 
 const RegisterScreen = () => {
   return (
@@ -16,7 +17,7 @@ const RegisterScreen = () => {
                   <Section>
                     <Column.Group centered>
                       <Column size={12}>
-                        <img src={LogoImage} />
+                        <img src={LogoImage} alt="Logo" />
                       </Column>
                     </Column.Group>
 
@@ -31,6 +32,7 @@ const RegisterScreen = () => {
                       </Column>
                     </Column.Group>
                   </Section>
+                  <RegisterForm />
                 </Card.Content>
               </Card>
             </Column>
