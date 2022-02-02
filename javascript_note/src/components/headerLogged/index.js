@@ -1,11 +1,11 @@
-import React, { useState } from "react";
-import { Navbar, Column, Button, Dropdown } from "rbx";
-import LogoImage from "../../assets/images/logo-white.png";
-import "../../styles/header.scss";
-import UserService from "../../services/users";
-import { Redirect, Link } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faList } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Button, Column, Dropdown, Navbar } from "rbx";
+import React, { useState } from "react";
+import { Link, Redirect } from "react-router-dom";
+import LogoImage from "../../assets/images/logo-white.png";
+import UserService from "../../services/users";
+import "../../styles/header.scss";
 
 function HeaderLogged(props) {
   const [redirectToHome, setRedirectToHome] = useState(false);
