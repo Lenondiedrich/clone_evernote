@@ -11,6 +11,9 @@ const UsersService = {
     localStorage.removeItem("user", null);
     localStorage.removeItem("token", null);
   },
+  delete: (id) => api.delete(`/users/${id}`),
+  updateUser: (id, params) => api.put(`/users/${id}`, params),
+  updatePassword: (id, params) => api.put(`/users/password/${id}`, params),
 };
 
 export default UsersService;

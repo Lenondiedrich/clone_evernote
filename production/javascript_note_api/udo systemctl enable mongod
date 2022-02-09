@@ -1,0 +1,10 @@
+[0;1;32m●[0m mongod.service - MongoDB Database Server
+     Loaded: loaded (/lib/systemd/system/mongod.service; disabled; vendor preset: enabled)
+     Active: [0;1;32mactive (running)[0m since Wed 2021-12-08 21:19:41 -03; 4s ago
+       Docs: https://docs.mongodb.org/manual
+   Main PID: 4641 (mongod)
+     Memory: 62.0M
+     CGroup: /system.slice/mongod.service
+             └─4641 /usr/bin/mongod --config /etc/mongod.conf
+
+dez 08 21:19:41 lenon-Aspire-5740 systemd[1]: Started MongoDB Database Server.
