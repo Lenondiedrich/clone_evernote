@@ -30,7 +30,7 @@
 
 <hr />
 <h3>📟 Layout da aplicação:</h3>
-
+<img src="./homepage.png" />
 <h3>⚙️ Instalação: </h3>
   
     <p>Necessário ter o MongoDB instalado</p>
