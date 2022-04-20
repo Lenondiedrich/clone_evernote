@@ -39,8 +39,9 @@
     $ git clone <https://github.com/Lenondiedrich/clone_evernote>
 
 <h4>Backend</h4>
+  
     #Navegue até o diretório production/javascript_note_api
-    $ cd production/javascript_note_api
+    $cd production/javascript_note_api
     
     #Instale as dependências
     $npm i ou yarn
